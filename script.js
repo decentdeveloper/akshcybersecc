@@ -95,3 +95,8 @@ function toggleTheme() {
     document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
 
+document.querySelectorAll('.cert-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('active');
+  });
+});
