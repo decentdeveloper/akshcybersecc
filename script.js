@@ -38,16 +38,54 @@ function closeModal() {
 const cursor = document.querySelector(".cursor");
 const follower = document.querySelector(".cursor-follower");
 
+/* =========================
+   DESKTOP (MOUSE)
+========================= */
 document.addEventListener("mousemove", e => {
+  cursor.style.opacity = "1";
+  follower.style.opacity = "1";
+
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
+
   follower.style.left = e.clientX - 10 + "px";
   follower.style.top = e.clientY - 10 + "px";
-
-  document.querySelectorAll(".blob").forEach((blob, i) => {
-    blob.style.transform = `translate(${e.clientX * 0.01 * (i+1)}px, ${e.clientY * 0.01 * (i+1)}px)`;
-  });
 });
+
+/* =========================
+   MOBILE (TOUCH)
+========================= */
+document.addEventListener("touchstart", e => {
+  const touch = e.touches[0];
+
+  cursor.classList.add("touch-active");
+  follower.classList.add("touch-active");
+
+  cursor.style.left = touch.clientX + "px";
+  cursor.style.top = touch.clientY + "px";
+
+  follower.style.left = touch.clientX - 10 + "px";
+  follower.style.top = touch.clientY - 10 + "px";
+});
+
+document.addEventListener("touchmove", e => {
+  const touch = e.touches[0];
+
+  cursor.style.left = touch.clientX + "px";
+  cursor.style.top = touch.clientY + "px";
+
+  follower.style.left = touch.clientX - 10 + "px";
+  follower.style.top = touch.clientY - 10 + "px";
+});
+
+document.addEventListener("touchend", () => {
+  cursor.classList.remove("touch-active");
+  follower.classList.remove("touch-active");
+
+  cursor.style.opacity = "0";
+  follower.style.opacity = "0";
+});
+
 
 /* THEME TOGGLE */
 function toggleTheme() {
@@ -56,3 +94,4 @@ function toggleTheme() {
   document.getElementById("toggleIcon").innerText =
     document.body.classList.contains("dark") ? "🌙" : "☀️";
 }
+
