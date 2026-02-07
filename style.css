@@ -116,6 +116,7 @@ section {
   border-radius: 20px;
   padding: 40px;
   backdrop-filter: blur(10px);
+  margin-top: 30px;
 }
 
 /* SKILLS */
@@ -181,6 +182,45 @@ section {
   transform: scale(1.05);
   box-shadow: 0 0 25px #00f5d4;
 }
+
+/* BADGE GRID */
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* Badge card overrides */
+.badge-card {
+  background: rgba(255, 255, 255, 0.05); /* cyber glass */
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  transition: 0.4s;
+}
+
+/* REMOVE white background for badge images */
+.badge-card img {
+  background: transparent !important;
+  padding: 0;
+  height: 140px;
+  object-fit: contain;
+}
+
+/* Badge hover glow */
+.badge-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px #00f5d4;
+}
+
+/* Verify link */
+.badge-card .verify {
+  display: inline-block;
+  margin-top: 10px;
+  color: #00f5d4;
+  font-weight: 600;
+}
+
 
 /* Hover overlay hint
 .cert-card::after {
@@ -588,4 +628,195 @@ section {
 .badge-card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px #00f5d4;
+}
+
+/* =========================
+   MOBILE TAP FEEDBACK
+   ========================= */
+button:active,
+.cert-card:active,
+.badge-card:active {
+  transform: scale(0.96);
+}
+
+/* =========================
+   BADGES – CLEAN LOOK
+   ========================= */
+
+/* .badge-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+} */
+
+/* .badge-item {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+.badge-item img {
+  width: 140px;
+  height: auto;
+  background: none;
+  border-radius: 12px;
+}
+
+.badge-item:hover {
+  transform: scale(1.08);
+}
+
+.badge-item p {
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.verify-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #00f5d4;
+  font-size: 0.9rem;
+} */
+
+/* ================= BADGES =================
+
+.badge-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.badge-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.badge-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.3);
+}
+
+/* Hover animation */
+.badge-wrapper:hover .badge-img {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.7);
+}
+
+/* Verify button hidden by default */
+/* .badge-verify-btn {
+  position: absolute;
+  bottom: -45px;
+  background: linear-gradient(135deg, #00ffd5, #00aaff);
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show verify on hover */
+/* .badge-wrapper:hover .badge-verify-btn {
+  opacity: 1;
+  transform: translateY(-5px);
+  pointer-events: auto;
+}
+
+/* Mobile support (tap-to-show) */
+/* @media (hover: none) {
+  .badge-wrapper:active .badge-verify-btn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+} */
+
+
+/* =========================
+   BADGES – FINAL CLEAN VERSION
+   ========================= */
+
+.badge-grid {
+  display: flex;
+  justify-content: flex-start; /* LEFT aligned */
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+  padding-left: 10px;
+}
+
+/* Wrapper reserves space so it never overlaps */
+.badge-wrapper {
+  position: relative;
+  width: 130px;
+  height: 170px; /* space for verify button */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Circular badge */
+.badge-img {
+  width: 130px;
+  height: 130px;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.35);
+}
+
+/* Hover animation */
+.badge-wrapper:hover .badge-img {
+  transform: scale(1.12) rotate(4deg);
+  box-shadow: 0 0 45px rgba(0, 255, 200, 0.8);
+}
+
+/* Verify button (hidden by default) */
+.badge-verify-btn {
+  margin-top: 14px;
+  background: linear-gradient(135deg, #00ffd5, #00aaff);
+  color: #000;
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(-5px);
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* Show verify on hover */
+.badge-wrapper:hover .badge-verify-btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Mobile tap support */
+@media (hover: none) {
+  .badge-wrapper:active .badge-verify-btn {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
